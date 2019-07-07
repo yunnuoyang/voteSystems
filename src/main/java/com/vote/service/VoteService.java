@@ -1,5 +1,10 @@
 package com.vote.service;
 
+import com.vote.pojo.Tickets;
+
 public interface VoteService {
-    public void addTicket(String uid,String tid,int ticketsType);
+
+    public boolean addTicket(Tickets tickets);
+
+    public Tickets findByUidAndTid(String uid,String tid);
 }
