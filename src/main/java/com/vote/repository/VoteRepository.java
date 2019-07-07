@@ -1,13 +1,20 @@
 package com.vote.repository;
 
 
+import com.vote.pojo.Tickets;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
+
 public interface VoteRepository {
     /**
      * 用户投票
-     * @param uid:用户id
-     * @param tid:主题id
-     * @param ticketsType: 投赞成票1，反对票0
      */
-    public void addTicket(String uid,String tid,int ticketsType);
+    @Insert("INSERT INTO tickets(id,uid,tid,addData,ticketsType)\n" +
+            "VALUES (#{id},#{uid},#{tid},#{addData},#{ticketsType})")
+    public void addTicket(Tickets tickets);
+
+    @Select("SELECT * FROM tickets WHERE uid = #{0} AND tid = #{1}")
+    public Tickets findByUidAndTid(String uid,String tid);
 
 }
+
