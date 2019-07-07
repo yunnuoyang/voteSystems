@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ThemeService {
    Integer addTheme(Theme theme);
-   void delTheme(MysqlxDatatypes.Scalar.String id);
+   void delTheme(String id);
    List<Theme> themeList(Theme theme);
    Integer modifyTheme(Theme theme);
 }
