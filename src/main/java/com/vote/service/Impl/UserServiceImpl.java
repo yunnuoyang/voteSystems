@@ -17,4 +17,14 @@ public class UserServiceImpl implements UserService {
     public int insUser(User user) {
         return userRepository.register(user);
     }
+
+    @Override
+    public int updateUser(User user) {
+        return userRepository.updUser(user);
+    }
+
+    @Override
+    public int deleteUser(User user) {
+        return userRepository.delUser(user);
+    }
 }
