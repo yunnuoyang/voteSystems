@@ -42,20 +42,20 @@
         </ul>
     </div>
 
-    <div class="layui-side layui-bg-black" style="margin-top: 13px; font:18px;">
+    <div class="layui-side layui-bg-black" style="margin-top: 10px; font:18px;">
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
                 <li class="layui-nav-item">
                     <a href="javascript:;">用户管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">用户列表</a></dd>
+                        <dd><a href="javascript:;" id="userlist">用户列表</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">主题管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" onclick="toShow('/themelist.jsp')">主题列表</a></dd>
+                        <dd><a href="javascript:;">主题列表</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
@@ -77,9 +77,12 @@
     </div>
 
     <script>
-        function toShow(obj) {
-            var src = $("#toShow").attr("src",obj);
-        }
+        $(function(){
+            $("#userlist").bind("click",function(){
+                var src = $("#toShow").attr("src",'userList.jsp');
+            })
+        })
+
     </script>
 
     <div class="layui-footer"style="text-align: center;font-size: 20px;">
