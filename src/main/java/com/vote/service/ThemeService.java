@@ -11,4 +11,6 @@ public interface ThemeService {
    void delTheme(String id);
    List<Theme> themeList(Theme theme);
    Integer modifyTheme(Theme theme);
+
+    Theme findThemeByID(String id);
 }

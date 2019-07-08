@@ -5,10 +5,12 @@ import com.vote.pojo.Theme;
 import com.vote.service.ThemeService;
 import com.vote.utils.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -17,7 +19,16 @@ public class ThemeController {
     @Autowired
     private ThemeService themeService;
 
-    @PutMapping("add")
+    @RequestMapping("/updateTheme")
+    public ModelAndView updateTheme(String id) {
+        ModelAndView modelAndView=new ModelAndView();
+        Theme theme=themeService.findThemeByID(id);
+        modelAndView.addObject("curTheme",theme);
+        modelAndView.setViewName("/updateTheme");
+        return modelAndView;
+    }
+
+    @RequestMapping("add")
     public String addTheme(Theme theme) {
         theme.setId(UUID.getUUID());
 //        theme.setThemeName("选举班长");
@@ -27,13 +38,13 @@ public class ThemeController {
         return "ok";
     }
 
-    @DeleteMapping("del")
+    @RequestMapping("del")
     public String delTheme(@RequestParam("id") String id) {
         themeService.delTheme(id);
         return "ok";
     }
 
-    @PostMapping("modify")
+    @RequestMapping("modify")
     public String modifyTheme(Theme theme) {
         System.out.println(theme);
         return "ok";
@@ -41,18 +52,12 @@ public class ThemeController {
 
     @GetMapping("list")
     public ResultData themeList(Theme theme) {
-        ResultData resultData=new ResultData();
+        ResultData resultData = new ResultData();
         List<Theme> themes = themeService.themeList(theme);
         resultData.setCode(0);
         resultData.setCount(10);
         resultData.setMsg("ok");
         resultData.setData(themes);
         return resultData;
-    }
-
-    public static void main(String[] args) {
-        Theme theme = new Theme();
-        theme.setThemeName("选举班长");
-        int a = 0;
     }
 }

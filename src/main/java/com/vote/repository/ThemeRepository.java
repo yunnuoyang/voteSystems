@@ -19,6 +19,13 @@ public interface ThemeRepository {
 
     @Delete(value = "delete from theme where id=#{id}")
     void deleteById(@Param(value = "id") String id);
+
     @Insert(value = "INSERT INTO votesystem.theme (id, themeName, themeDate, endDate)VALUES(#{id}, #{themeName},#{themeDate},#{endDate})")
     Integer save(Theme theme);
+
+    @Select("select * from theme where id=#{id} ")
+    @ResultMap("resultMap")
+    Theme findThemeByID(@Param("id") String id);
+    @Update("update theme set themeName =#{themeName}，themeDate =#{themeDate}，tendDate = #{endDate} where id=#{id}")
+    Integer updateThemeByID(Theme theme);
 }
