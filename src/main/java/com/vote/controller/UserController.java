@@ -22,7 +22,7 @@ public class UserController {
     @ResponseBody
       public String register(User user,@RequestParam("province") String province,@RequestParam("city") String city,@RequestParam("counties") String counties){
         user.setAddress(province+city+counties+"");
-        user.setId(UUID.randomUUID().toString());
+        user.setId(com.vote.utils.UUID.getUUID());
         int i = userService.insUser(user);
         if(i>0){
         return "success";
