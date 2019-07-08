@@ -37,7 +37,7 @@
     <form action="${pageContext.request.contextPath }/user/login" method="post">
         <div class="login">在线投票系统
             <span style="color:red">${err }</span>
-            <a href="register.jsp">注册</a>
+            <a href="/register.jsp">注册</a>
 
         </div>
         <div class="username-text">用户名:</div>
