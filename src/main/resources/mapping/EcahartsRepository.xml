@@ -11,4 +11,10 @@
        GROUP BY DATE
    </select>
 
+    <select id="getPieData" resultType="EchartForPie">
+      SELECT COUNT(*) AS value
+        FROM tickets
+      WHERE tid = #{param1} AND ticketsType =#{param2}
+    </select>
+
 </mapper>

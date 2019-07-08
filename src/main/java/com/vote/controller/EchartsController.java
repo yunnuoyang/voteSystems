@@ -23,4 +23,11 @@ public class EchartsController {
         return  data;
     }
 
+    @GetMapping("/getPieData/{tid}")
+    @ResponseBody
+    public EchartVO getPieData(@PathVariable String tid){
+        System.out.println("进入controller"+tid);
+        EchartVO echartVO = echartsService.getPieData(tid);
+        return echartVO;
+    }
 }
