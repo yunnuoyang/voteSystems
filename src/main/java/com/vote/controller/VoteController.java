@@ -1,6 +1,7 @@
 package com.vote.controller;
 
 import com.vote.pojo.Tickets;
+import com.vote.pojo.User;
 import com.vote.service.VoteService;
 import com.vote.utils.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller
@@ -22,19 +25,19 @@ public class VoteController {
 
     @GetMapping("/addTicket/{tid}/{ticketsType}")
     @ResponseBody
-    public String addTicket(HttpSession session, @PathVariable("tid") String tid, @PathVariable("ticketsType") int ticketsType){
+    public String addTicket(HttpSession session, @PathVariable("tid") String tid, @PathVariable("ticketsType") int ticketsType) throws ParseException {
         System.out.println("进入controller");
         //通过session获取当前用户的id
-        //session.getAttribute("user");
+        User user = (User) session.getAttribute("user");
         //将投票信息封装成对象，传给service
         Tickets tickets = new Tickets();
         tickets.setId(UUID.getUUID());
-        tickets.setUid("2");
+        tickets.setUid(user.getId());
         tickets.setTid(tid);
         tickets.setAddData(new Date());
         tickets.setTicketsType(0);
         //判断是否已经投过票
-        Tickets alreadyVote = voteService.findByUidAndTid("2", tid);
+        Tickets alreadyVote = voteService.findByUidAndTid(user.getId(), tid);
         if(alreadyVote!=null){
             return "alreadyVote";
         }else {

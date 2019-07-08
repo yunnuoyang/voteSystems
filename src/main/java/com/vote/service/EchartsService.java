@@ -6,5 +6,7 @@ import com.vote.pojo.EchartVO;
 import java.util.List;
 
 public interface EchartsService {
+
     public EchartVO getBarData();
+    public EchartVO getPieData(String tid);
 }

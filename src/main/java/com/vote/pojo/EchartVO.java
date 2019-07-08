@@ -8,4 +8,5 @@ import java.util.List;
 public class EchartVO {
     private List<String> date;
     private List<Integer> count;
+    private List<EchartForPie> echarts;
  }
