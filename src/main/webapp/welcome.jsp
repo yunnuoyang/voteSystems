@@ -9,7 +9,7 @@
 <div style="padding:20px;overflow:hidden; color:black;">
 	<img src="images/title.jpg" alt="">
 	<p style="font-size: 30px; line-height: 60px; height: 60px;">欢迎使用在线投票系统</p>
-  	<p  style="font-size: 25px;">开发人员：杨鋆诺 吴天雄 林秦吉 申莹 郑明阳 李宁波 宋微微</p>
+  	<p  style="font-size: 25px;">开发人员：杨鋆诺 吴天雄 林秦吉 申莹 宋薇伟 郑明阳 李宁波</p>
   	<hr />
   	<h1 style="font-size: 20px;">系统环境:</h1>
   	<p>系统环境：Windows</p>

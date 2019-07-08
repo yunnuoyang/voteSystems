@@ -55,13 +55,13 @@
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">主题管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">主题列表</a></dd>
+                        <dd><a href="javascript:;" onclick="toShow('/themelist.jsp')">主题列表</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">投票管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">票数统计</a></dd>
+                        <dd><a href="javascript:;" onclick="toShow('/echarts1.jsp')">票数统计</a></dd>
                     </dl>
                 </li>
 
@@ -71,12 +71,15 @@
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <iframe id="toShow" src="welcome.jsp" style="height:600px;width:100%;border:0;">
+        <iframe id="toShow" src="/welcome.jsp" style="height:600px;width:100%;border:0;">
         </iframe>
 
     </div>
 
     <script>
+        function toShow(obj) {
+            var src = $("#toShow").attr("src",obj);
+        }
         $(function(){
             $("#userlist").bind("click",function(){
                 var src = $("#toShow").attr("src",'userList.jsp');
