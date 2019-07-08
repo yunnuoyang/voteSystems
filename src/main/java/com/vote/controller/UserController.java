@@ -17,17 +17,16 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("/register")
+    @ResponseBody
       public String register(User user,@RequestParam("province") String province,@RequestParam("city") String city,@RequestParam("counties") String counties){
-
         user.setAddress(province+city+counties+"");
         user.setId(UUID.randomUUID().toString());
         int i = userService.insUser(user);
         if(i>0){
-         return "redirect:/login.jsp";
+        return "success";
         }else{
-            return "error";
+        return "error";
         }
-
     }
 
     /**
