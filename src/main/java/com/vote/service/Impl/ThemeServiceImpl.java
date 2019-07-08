@@ -30,6 +30,11 @@ public class ThemeServiceImpl implements ThemeService {
 
     @Override
     public Integer modifyTheme(Theme theme) {
-        return null;
+        return themeRepository.updateThemeByID(theme);
+    }
+
+    @Override
+    public Theme findThemeByID(String id) {
+        return themeRepository.findThemeByID(id);
     }
 }

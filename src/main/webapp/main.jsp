@@ -24,7 +24,7 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header" style="height: 70px;">
-        <div class="layui-logo" style="width:300px" >
+        <div class="layui-logo" style="width:300px" ><%--<img src="images/link.jpg" style="width: 40px;height: 40px;">--%>
             <span style="font-size:30px; font-weight:bolder;font-family:'幼圆';width: 300px;">在 线 投 票 系 统</span></div>
         </ul>
         <ul class="layui-nav layui-layout-right">
@@ -34,7 +34,7 @@
                     管理员
                 </a>
                 <dl class="layui-nav-child">
-                    <dd><a href="index.jsp" >基本资料</a></dd>
+                    <dd><a href="javascript:void(0)" >基本资料</a></dd>
                     <dd><a href="">安全设置</a></dd>
                 </dl>
             </li>
@@ -42,46 +42,44 @@
         </ul>
     </div>
 
-    <div class="layui-side layui-bg-black" style="margin-top: 10px; font-size:18px;">
-
+    <div class="layui-side layui-bg-black" style="margin-top: 13px; font:18px;">
+        <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
                 <li class="layui-nav-item">
                     <a href="javascript:;">用户管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:void(0);" id="userlist">用户列表</a></dd>
+                        <dd><a href="javascript:;">用户列表</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">主题管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" id="themelist">主题列表</a></dd>
+                        <dd><a href="javascript:;" onclick="toShow('/themelist.jsp')">主题列表</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">投票管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" id="tickets">票数统计</a></dd>
+                        <dd><a href="javascript:;">票数统计</a></dd>
                     </dl>
                 </li>
 
             </ul>
+        </div>
     </div>
 
-    <div class="layui-body" style="padding: 15px;">
+    <div class="layui-body">
         <!-- 内容主体区域 -->
-        <iframe id="toShow" src="/welcome.jsp" style="height:600px;width:100%;border:0;">
+        <iframe id="toShow" src="welcome.jsp" style="height:600px;width:100%;border:0;">
         </iframe>
 
     </div>
 
     <script>
-        $(function(){
-            $("#userlist").bind("click",function () {
-              var src = $("#toShow").attr("src","userList.jsp");
-            })
-        })
-
+        function toShow(obj) {
+            var src = $("#toShow").attr("src",obj);
+        }
     </script>
 
     <div class="layui-footer"style="text-align: center;font-size: 20px;">
