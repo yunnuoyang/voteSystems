@@ -71,7 +71,7 @@
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <iframe id="toShow" src="welcome.jsp" style="height:600px;width:100%;border:0;">
+        <iframe id="toShow" src="/welcome.jsp" style="height:600px;width:100%;border:0;">
         </iframe>
 
     </div>
