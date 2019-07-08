@@ -23,21 +23,9 @@
 
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
-    <div class="layui-header">
-        <div class="layui-logo">投票系统</div>
-        <!-- 头部区域（可配合layui已有的水平导航） -->
-        <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="javascript:void(0)" onclick="toShow('/themelist.jsp')">主题管理</a></li>
-            <li class="layui-nav-item"><a href="javascript:void(0)" onclick="toShow('/index.jsp')">商品管理</a></li>
-            <li class="layui-nav-item"><a href="javascript:void(0)" onclick="toShow('/register.jsp')">用户</a></li>
-            <li class="layui-nav-item">
-                <a href="javascript:;">其它系统</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="">邮件管理</a></dd>
-                    <dd><a href="">消息管理</a></dd>
-                    <dd><a href="">授权管理</a></dd>
-                </dl>
-            </li>
+    <div class="layui-header" style="height: 70px;">
+        <div class="layui-logo" style="width:300px" ><%--<img src="images/link.jpg" style="width: 40px;height: 40px;">--%>
+            <span style="font-size:30px; font-weight:bolder;font-family:'幼圆';width: 300px;">在 线 投 票 系 统</span></div>
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
@@ -54,39 +42,47 @@
         </ul>
     </div>
 
-    <div class="layui-side layui-bg-black">
+    <div class="layui-side layui-bg-black" style="margin-top: 13px; font:18px;">
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
-                <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">所有商品</a>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">用户管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
+                        <dd><a href="javascript:;">用户列表</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">主题管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">主题列表</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;">解决方案</a>
+                    <a href="javascript:;">投票管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
+                        <dd><a href="javascript:;">票数统计</a></dd>
                     </dl>
                 </li>
+
             </ul>
         </div>
     </div>
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <iframe id="toShow" src="" style="height:600px;width:100%;border:0;"></iframe>
+        <iframe id="toShow" src="welcome.jsp" style="height:600px;width:100%;border:0;">
+        </iframe>
 
     </div>
+
     <script>
         function toShow(obj) {
             var src = $("#toShow").attr("src",obj);
         }
-
     </script>
 
-    <div class="layui-footer">
+    <div class="layui-footer"style="text-align: center;font-size: 20px;">
         <!-- 底部固定区域 -->
         © bjwlxy.com - 宝鸡文理学院实训
     </div>
@@ -96,7 +92,6 @@
     //JavaScript代码区域
     layui.use('element', function () {
         var element = layui.element;
-
     });
 </script>
 </body>
