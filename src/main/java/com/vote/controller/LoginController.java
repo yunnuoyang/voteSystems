@@ -17,13 +17,19 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
     @PostMapping("/login")
-    public String login(String loginName, String password, Model model) throws Exception{
+    public String login(String loginName, String password, Model model,HttpSession session) throws Exception{
         ModelAndView modelAndView=new ModelAndView();
 
         try {
             User user=loginService.login(loginName, password);
             model.addAttribute("user",user);
-            return "main";
+            session.setAttribute("user",user);
+            if(user.getStatus()==1){
+                return "main";
+            }else if(user.getStatus()==0){
+                return "main1";
+            }
+
         }catch (Exception e){
             if(e.getMessage().equals("用户名或者密码错误！")){
                 model.addAttribute("err",e.getMessage());

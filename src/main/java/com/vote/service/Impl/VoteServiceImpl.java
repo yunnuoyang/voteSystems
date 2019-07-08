@@ -41,8 +41,8 @@ public class VoteServiceImpl implements VoteService {
 
         if(endCalendar.after(nowCalendar)){
             flag = true;
-            //判断该用户是否已经投过
-            //voteRepository.addTicket(tickets);
+            //在截至时间之前，可以投票，将投票记录存入数据表中
+            voteRepository.addTicket(tickets);
         }
 
         return flag;
