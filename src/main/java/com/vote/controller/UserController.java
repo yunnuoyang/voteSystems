@@ -1,5 +1,6 @@
 package com.vote.controller;
 
+import com.vote.pojo.ResultData;
 import com.vote.pojo.User;
 import com.vote.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -51,5 +53,14 @@ public class UserController {
         user.setId(id);
         int i = userService.deleteUser(user);
         return "redirect:/main.jsp";
+    }
+    //用户列表
+    @RequestMapping("/userList")
+    @ResponseBody
+    public ResultData findAll(@RequestParam(defaultValue = "1") int page,@RequestParam(defaultValue = "10") int limit){
+        ResultData all = userService.findCurPage(page, limit);
+        all.setCode(0);
+        all.setMsg("");
+        return all;
     }
 }
