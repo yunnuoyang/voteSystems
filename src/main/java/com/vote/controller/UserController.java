@@ -5,6 +5,7 @@ import com.vote.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.UUID;
@@ -27,5 +28,29 @@ public class UserController {
             return "error";
         }
 
+    }
+
+    /**
+     * 修改用户信息
+     * @return
+     */
+    @RequestMapping("/updateUser")
+    public String updateUser(User user,@RequestParam("province") String province,@RequestParam("city") String city,@RequestParam("counties") String counties){
+        user.setAddress(province+city+counties+"");
+        int i = userService.updateUser(user);
+        return "redirect:/main.jsp";
+    }
+
+    /**
+     * 删除用户
+     * @param id
+     * @return
+     */
+    @RequestMapping("/deleteUser")
+    public String deleteUser(String id){
+        User user=new User();
+        user.setId(id);
+        int i = userService.deleteUser(user);
+        return "redirect:/main.jsp";
     }
 }
