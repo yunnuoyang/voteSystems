@@ -26,6 +26,6 @@ public interface ThemeRepository {
     @Select("select * from theme where id=#{id} ")
     @ResultMap("resultMap")
     Theme findThemeByID(@Param("id") String id);
-    @Update("update theme set themeName =#{themeName}，themeDate =#{themeDate}，tendDate = #{endDate} where id=#{id}")
+    @Update("update theme set themeName =#{themeName},themeDate =#{themeDate},endDate = #{endDate} where id=#{id}")
     Integer updateThemeByID(Theme theme);
 }
