@@ -29,12 +29,12 @@ public class VoteController {
         //将投票信息封装成对象，传给service
         Tickets tickets = new Tickets();
         tickets.setId(UUID.getUUID());
-        //tickets.setUid();
+        tickets.setUid("2");
         tickets.setTid(tid);
         tickets.setAddData(new Date());
-        tickets.setTicketsType(ticketsType);
+        tickets.setTicketsType(0);
         //判断是否已经投过票
-        Tickets alreadyVote = voteService.findByUidAndTid("111", tid);
+        Tickets alreadyVote = voteService.findByUidAndTid("2", tid);
         if(alreadyVote!=null){
             return "alreadyVote";
         }else {

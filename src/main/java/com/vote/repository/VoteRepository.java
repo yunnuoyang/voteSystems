@@ -13,7 +13,7 @@ public interface VoteRepository {
             "VALUES (#{id},#{uid},#{tid},#{addData},#{ticketsType})")
     public void addTicket(Tickets tickets);
 
-    @Select("SELECT * FROM tickets WHERE uid = #{0} AND tid = #{1}")
+    @Select("SELECT * FROM tickets WHERE uid = #{param1} AND tid = #{param2}")
     public Tickets findByUidAndTid(String uid,String tid);
 
 }
