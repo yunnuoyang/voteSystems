@@ -14,9 +14,10 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="layui/css/layui.css"  media="all">
+    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
     <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
-    <script src="layui/layui.js" charset="utf-8"></script>
+    <script src="/layui/layui.js" charset="utf-8"></script>
+    <script src="/js/jquery-1.8.3.min.js" charset="utf-8"></script>
     <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 
 
@@ -26,9 +27,9 @@
         <div class="layui-logo">投票系统</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="">控制台</a></li>
-            <li class="layui-nav-item"><a href="">商品管理</a></li>
-            <li class="layui-nav-item"><a href="">用户</a></li>
+            <li class="layui-nav-item"><a href="javascript:void(0)" onclick="toShow('/themelist.jsp')">主题管理</a></li>
+            <li class="layui-nav-item"><a href="javascript:void(0)" onclick="toShow('/index.jsp')">商品管理</a></li>
+            <li class="layui-nav-item"><a href="javascript:void(0)" onclick="toShow('/register.jsp')">用户</a></li>
             <li class="layui-nav-item">
                 <a href="javascript:;">其它系统</a>
                 <dl class="layui-nav-child">
@@ -45,7 +46,7 @@
                     管理员
                 </a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="javascript:void(0)" >基本资料</a></dd>
                     <dd><a href="">安全设置</a></dd>
                 </dl>
             </li>
@@ -56,7 +57,7 @@
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">所有商品</a>
                     <dl class="layui-nav-child">
@@ -75,19 +76,25 @@
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <iframe id="" src="" style="height:600px;width:100%;border:0;"></iframe>
+        <iframe id="toShow" src="" style="height:600px;width:100%;border:0;"></iframe>
 
     </div>
+    <script>
+        function toShow(obj) {
+            var src = $("#toShow").attr("src",obj);
+        }
+
+    </script>
 
     <div class="layui-footer">
         <!-- 底部固定区域 -->
         © bjwlxy.com - 宝鸡文理学院实训
     </div>
 </div>
-<script src="../src/layui.js"></script>
+<script src="/layui/layui.js"></script>
 <script>
     //JavaScript代码区域
-    layui.use('element', function(){
+    layui.use('element', function () {
         var element = layui.element;
 
     });

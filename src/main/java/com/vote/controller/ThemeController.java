@@ -1,5 +1,6 @@
 package com.vote.controller;
 
+import com.vote.pojo.ResultData;
 import com.vote.pojo.Theme;
 import com.vote.service.ThemeService;
 import com.vote.utils.UUID;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -38,9 +40,14 @@ public class ThemeController {
     }
 
     @GetMapping("list")
-    public List<Theme> themeList(Theme theme) {
+    public ResultData themeList(Theme theme) {
+        ResultData resultData=new ResultData();
         List<Theme> themes = themeService.themeList(theme);
-        return themes;
+        resultData.setCode(0);
+        resultData.setCount(10);
+        resultData.setMsg("ok");
+        resultData.setData(themes);
+        return resultData;
     }
 
     public static void main(String[] args) {

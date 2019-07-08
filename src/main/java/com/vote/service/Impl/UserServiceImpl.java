@@ -1,4 +1,4 @@
-package com.vote.service.impl;
+package com.vote.service.Impl;
 
 import com.vote.pojo.User;
 import com.vote.repository.UserRepository;
