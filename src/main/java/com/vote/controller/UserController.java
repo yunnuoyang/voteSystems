@@ -36,23 +36,33 @@ public class UserController {
      * @return
      */
     @RequestMapping("/updateUser")
+    @ResponseBody
     public String updateUser(User user,@RequestParam("province") String province,@RequestParam("city") String city,@RequestParam("counties") String counties){
         user.setAddress(province+city+counties+"");
         int i = userService.updateUser(user);
-        return "redirect:/main.jsp";
+       if(i>0){
+        return "success";
+       }else{
+           return "error";
+       }
     }
 
     /**
      * 删除用户
-     * @param id
+     * @param uid
      * @return
      */
     @RequestMapping("/deleteUser")
-    public String deleteUser(String id){
+    @ResponseBody
+    public String deleteUser(@RequestParam("uid") String uid){
         User user=new User();
-        user.setId(id);
+        user.setId(uid);
         int i = userService.deleteUser(user);
-        return "redirect:/main.jsp";
+         if(i>0){
+        return "success";
+          }else{
+             return "error";
+         }
     }
     //用户列表
     @RequestMapping("/userList")

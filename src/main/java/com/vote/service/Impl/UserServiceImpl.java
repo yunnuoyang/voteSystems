@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
     public ResultData findCurPage(int curPage, int pageSize) {
         ResultData resultData=new ResultData();
         resultData.setCount(userRepository.userTotal());
-        resultData.setData(userRepository.findCurPage(curPage,pageSize));
+        resultData.setData(userRepository.findCurPage((curPage-1)*pageSize,pageSize));
         return resultData;
     }
 
