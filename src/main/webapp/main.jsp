@@ -14,10 +14,10 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
     <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
-    <script src="layui/layui.js" charset="utf-8"></script>
-    <script src="js/jquery-1.8.3.min.js" charset="utf-8"></script>
+    <script src="/layui/layui.js" charset="utf-8"></script>
+    <script src="/js/jquery-1.8.3.min.js" charset="utf-8"></script>
     <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 
 
@@ -27,9 +27,9 @@
         <div class="layui-logo">投票系统</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="">控制台</a></li>
-            <li class="layui-nav-item"><a href="javascript:void(0)" onclick="toShow('index.jsp')">商品管理</a></li>
-            <li class="layui-nav-item"><a href="javascript:void(0)" onclick="toShow('register.jsp')">用户</a></li>
+            <li class="layui-nav-item"><a href="javascript:void(0)" onclick="toShow('/themelist.jsp')">主题管理</a></li>
+            <li class="layui-nav-item"><a href="javascript:void(0)" onclick="toShow('/index.jsp')">商品管理</a></li>
+            <li class="layui-nav-item"><a href="javascript:void(0)" onclick="toShow('/register.jsp')">用户</a></li>
             <li class="layui-nav-item">
                 <a href="javascript:;">其它系统</a>
                 <dl class="layui-nav-child">
@@ -91,7 +91,7 @@
         © bjwlxy.com - 宝鸡文理学院实训
     </div>
 </div>
-<script src="../src/layui.js"></script>
+<script src="/layui/layui.js"></script>
 <script>
     //JavaScript代码区域
     layui.use('element', function () {
