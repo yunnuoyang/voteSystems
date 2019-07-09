@@ -58,9 +58,9 @@ public class ThemeController {
 
     @GetMapping("list")
     @ResponseBody
-    public ResultData themeList(Theme theme) {
+    public ResultData themeList(Theme theme,@RequestParam(defaultValue = "1") int page,@RequestParam(defaultValue = "10") int limit) {
         ResultData resultData = new ResultData();
-        List<Theme> themes = themeService.themeList(theme);
+        List<Theme> themes = themeService.themeList(theme,page,limit);
         resultData.setCode(0);
         resultData.setCount(10);
         resultData.setMsg("ok");

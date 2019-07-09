@@ -49,7 +49,7 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;">用户管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" id="userlist">用户列表</a></dd>
+                        <dd><a href="javascript:;"  onclick="toShow('/userList.jsp')">用户列表</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item layui-nav-itemed">
@@ -81,9 +81,9 @@
             var src = $("#toShow").attr("src",obj);
         }
         $(function(){
-            $("#userlist").bind("click",function(){
-                var src = $("#toShow").attr("src",'userList.jsp');
-            })
+                $("#userlist").bind("click",function(){
+                    var src = $("#toShow").attr("src",'userList.jsp');
+                })
         })
 
     </script>

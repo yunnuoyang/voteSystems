@@ -24,8 +24,8 @@ public class ThemeServiceImpl implements ThemeService {
     }
 
     @Override
-    public List<Theme> themeList(Theme theme) {
-        return themeRepository.findAll(theme);
+    public List<Theme> themeList(Theme theme,int page,int limit) {
+        return themeRepository.findAll(theme,page,limit);
     }
 
     @Override

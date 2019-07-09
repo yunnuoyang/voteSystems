@@ -8,14 +8,14 @@ import java.util.Date;
 import java.util.List;
 
 public interface ThemeRepository {
-    @Select("select * from theme ")
+    @Select("select * from theme limit #{page},#{limit} ")
     @Results(id = "resultMap", value = {
             @Result(column = "id", property = "id", javaType = String.class, jdbcType = JdbcType.VARCHAR),
             @Result(column = "themeName", property = "themeName", javaType = String.class, jdbcType = JdbcType.VARCHAR),
             @Result(column = "themeDate", property = "themeDate", javaType = Date.class, jdbcType = JdbcType.DATE),
             @Result(column = "endDate", property = "endDate", javaType = Date.class, jdbcType = JdbcType.DATE)
     })
-    List<Theme> findAll(Theme theme);
+    List<Theme> findAll(Theme theme,@Param(value = "page") int page,@Param(value = "limit") int limit);
 
     @Delete(value = "delete from theme where id=#{id}")
     void deleteById(@Param(value = "id") String id);

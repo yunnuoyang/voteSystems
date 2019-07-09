@@ -75,7 +75,7 @@
                     layer.close(index);
                 });
             } else if (obj.event === 'edit') {
-                layer.alert('编辑行：<br>' + JSON.stringify(data))
+                // layer.alert('编辑行：<br>' + JSON.stringify(data))
                 window.location = "theme/updateTheme?id=" + obj.data.id;
             }
         });
