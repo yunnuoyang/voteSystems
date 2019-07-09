@@ -9,4 +9,5 @@ import java.util.List;
 public interface EcahartsRepository {
     public List<Echart> getBarData();
     public EchartForPie getPieData(String tid,Integer ticketsType);
+    public List<Echart> getBarDataByPerson();
 }

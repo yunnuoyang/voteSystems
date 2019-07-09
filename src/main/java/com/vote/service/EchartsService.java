@@ -9,4 +9,5 @@ public interface EchartsService {
 
     public EchartVO getBarData();
     public EchartVO getPieData(String tid);
+    public EchartVO getBarDataByPerson();
 }
