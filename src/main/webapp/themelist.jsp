@@ -44,8 +44,10 @@
       </thead>
   </table>
 
+  <div id="chart" style="position:absolute;left: 900px;top: 230px;"></div>
+
   <script type="text/html" id="barDemo">
-      <!-- <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a> --!>
+      <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">投票统计</a>
       <a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
       <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
   </script>
@@ -64,7 +66,13 @@
         table.on('tool(demo)', function (obj) {
             var data = obj.data;
             if (obj.event === 'detail') {
-                layer.msg('ID：' + data.id + ' 的查看操作');
+                $.ajax( {
+                    url: "/echarts3.jsp?tid="+data.id,
+                    type: "GET",
+                    success: function(data){
+                        var result = $(data)
+                        $("#chart").html(result);}
+                });
             } else if (obj.event === 'del') {
                 layer.confirm('真的删除行么', function (index) {
                     var data = obj.data;
