@@ -30,4 +30,12 @@ public class EchartsController {
         EchartVO echartVO = echartsService.getPieData(tid);
         return echartVO;
     }
+
+    @GetMapping("/getBarData2")
+    @ResponseBody
+    public EchartVO getBarData2(){
+        System.out.println("进入controller");
+        EchartVO data = echartsService.getBarDataByPerson();
+        return  data;
+    }
 }

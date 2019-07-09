@@ -49,4 +49,19 @@ public class EchartsServiceImpl  implements EchartsService {
         return echartVO;
     }
 
+    @Override
+    public EchartVO getBarDataByPerson() {
+        List<Echart> barData2 = ecahartsRepository.getBarDataByPerson();
+        EchartVO echartVO = new EchartVO();
+        List<String> date = new ArrayList<String>();
+        List<Integer> count = new ArrayList<Integer>();
+        for(Echart echart : barData2){
+            date.add(echart.getDate());
+            count.add(echart.getCount());
+        }
+        echartVO.setDate(date);
+        echartVO.setCount(count);
+        return echartVO;
+    }
+
 }

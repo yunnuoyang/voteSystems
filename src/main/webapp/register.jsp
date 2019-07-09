@@ -40,7 +40,6 @@
                     ,'密码必须6到12位，且不能出现空格'
                 ]
             });
-
             //监听提交
             form.on('submit(go)', function(data){
                 //弹出层  最终的提交信息  当前容器的全部表单字段，名值对形式：{name: value}
@@ -66,16 +65,13 @@
                                 }
                             })
                             /*返回注册界面*/
-                           location.href = "/register.jsp";
+                            location.href = "/register.jsp";
                         }
                     }
                 })
                 return false;
             });
-
         });
-
-
     })
 </script>
 
@@ -138,11 +134,10 @@
     </div>
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <button class="layui-btn" lay-submit lay-filter="go">注册</button>
+            <button class="layui-btn" lay-submit lay-filter="go" >注册</button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
         </div>
     </div>
 </form>
 </body>
 </html>
-

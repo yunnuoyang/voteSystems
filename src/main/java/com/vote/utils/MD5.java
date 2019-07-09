@@ -9,28 +9,28 @@ public class MD5 {
 	public static void main(String[] args) {
 		String string="111111";
 		String string2 =MD5Encoder.encode(string.getBytes());
-		// Êä³ö½á¹û32Î»
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½32Î»
 		System.out.println(string2+" len >>> "+string2.length());
 		
-		//¶ÔÃÜÂë123¼ÓÃÜ
+
 		String string3 ="123";
 		String encodingStr=encoding(string3);
-		System.out.println("ÃÜÎÄ¡·¡·¡·"+ encodingStr.length()+" "+encoding(string3));
+		System.out.println("ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ï¿½"+ encodingStr.length()+" "+encoding(string3));
 	}
 	
-	// ×Ô¼ºÐ´Ò»¸ö,Ê¹ÓÃmd5µÄ»úÖÆ¶Ô×Ö·û´®½øÐÐ¼ÓÃÜ	
+	// ï¿½Ô¼ï¿½Ð´Ò»ï¿½ï¿½,Ê¹ï¿½ï¿½md5ï¿½Ä»ï¿½ï¿½Æ¶ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¼ï¿½ï¿½ï¿½	
 	public static String encoding(String string){
 //		String string ="h";
 		try {
 				MessageDigest messageDigest = MessageDigest.getInstance("md5");
-				byte[] md5  = messageDigest.digest(string.getBytes());//ºËÐÄËã·¨   ²»È»¿´µÄ// Ò»¸ö×Ö½Ú  ×ª³ÉÕûÊý
+				byte[] md5  = messageDigest.digest(string.getBytes());//ï¿½ï¿½ï¿½ï¿½ï¿½ã·¨   ï¿½ï¿½È»ï¿½ï¿½ï¿½ï¿½// Ò»ï¿½ï¿½ï¿½Ö½ï¿½  ×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				BigInteger bigInteger = new BigInteger(1, md5);
 				String md5_str = bigInteger.toString(16);
 //				System.out.println(md5_str);
 				return md5_str;
 			} catch (Exception e) {
 					e.printStackTrace();
-					System.out.println("Ã»ÓÐMD5Ëã·¨");
+					System.out.println("Ã»ï¿½ï¿½MD5ï¿½ã·¨");
 			}
 		return null;
 	}

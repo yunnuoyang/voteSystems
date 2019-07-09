@@ -17,4 +17,12 @@
       WHERE tid = #{param1} AND ticketsType =#{param2}
     </select>
 
+    <select id="getBarDataByPerson" resultType="Echart">
+      SELECT
+        COUNT(*) AS COUNT,
+        CONCAT(YEAR(adddata),'-',MONTH(adddata)) AS DATE
+      FROM tickets
+    GROUP BY DATE
+    </select>
+
 </mapper>
