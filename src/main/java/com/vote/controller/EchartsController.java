@@ -18,7 +18,6 @@ public class EchartsController {
     @GetMapping("/getBarData")
     @ResponseBody
     public EchartVO getBarData(){
-        System.out.println("进入controller");
         EchartVO data = echartsService.getBarData();
         return  data;
     }
@@ -26,7 +25,6 @@ public class EchartsController {
     @GetMapping("/getPieData/{tid}")
     @ResponseBody
     public EchartVO getPieData(@PathVariable String tid){
-        System.out.println("进入controller"+tid);
         EchartVO echartVO = echartsService.getPieData(tid);
         return echartVO;
     }
@@ -34,7 +32,6 @@ public class EchartsController {
     @GetMapping("/getBarData2")
     @ResponseBody
     public EchartVO getBarData2(){
-        System.out.println("进入controller");
         EchartVO data = echartsService.getBarDataByPerson();
         return  data;
     }
