@@ -25,4 +25,9 @@
     <select id="userTotal" resultType="int" >
        select count(*) from user ;
     </select>
+
+    <!--根据id查询用户-->
+    <select id="findUserById" resultType="User">
+      select * from user where id=#{id};
+    </select>
 </mapper>

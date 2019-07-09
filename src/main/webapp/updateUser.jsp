@@ -1,4 +1,6 @@
-<%--
+<%@ page import="com.vote.pojo.User" %>
+<%@ page import="com.vote.service.UserService" %>
+<%@ page import="com.vote.service.Impl.UserServiceImpl" %><%--
   Created by IntelliJ IDEA.
   User: hp
   Date: 2019/7/8
@@ -9,11 +11,11 @@
 <html>
 <head>
     <title>修改用户界面</title>
-    <link rel="stylesheet" href="layui/css/layui.css" type="text/css" media="all">
-    <script src="js/jquery-1.8.3.min.js"></script>
+    <link rel="stylesheet" href="/layui/css/layui.css" type="text/css" media="all">
+    <script src="/js/jquery-1.8.3.min.js"></script>
 </head>
 <body>
-<script src="layui/layui.js" charset="utf-8"></script>
+<script src="/layui/layui.js" charset="utf-8"></script>
 <script>
     $(function(){
         //Demo
@@ -50,17 +52,19 @@
                 //弹出层  最终的提交信息  当前容器的全部表单字段，名值对形式：{name: value}
                 // layer.msg(JSON.stringify(data.field));
                 $.ajax({
-                    url:"/user/register",
+                    url:"/user/updateUser",
                     type:"post",
                     data:data.field,
-                    dataType:"JSON",
-                    success:function(datas) {
-                        if (datas == "success") {
-                            layer.msg("修改成功！");
-                         location.href="/main.jsp";
+                    dataType:"text",
+                    success:function(res) {
+                        if (res == "success") {
+                          layer.alert("修改成功！");
+                         window.location.href="/welcome.jsp";
                         } else {
+                            layer.alert("修改失败！");
                             // 提示框
                             layer.open({
+
                                 confirmTrans: function(){
                                     //配置一个透明的询问框
                                     layer.msg('用户信息修改失败，请重新修改！', {
@@ -71,7 +75,7 @@
 
                             })
                             /*返回界面*/
-                            location.href = "/updateUser.jsp";
+                           window.location.href = "/updateUser.jsp";
                         }
                     }
                 })
@@ -84,39 +88,34 @@
     })
 
 </script>
-
 <ins class="adsbygoogle" style="display:inline-block;width:970px;height:60px" data-ad-client="ca-pub-6111334333458862" data-ad-slot="3820120620"></ins>
 <fieldset class="layui-elem-field layui-field-title"  style="text-align: center;">
-    <legend><h2>用户注册</h2></legend>
+    <legend><h2>修改用户</h2></legend>
 </fieldset>
 <form class="layui-form" action="#" method="post">
+
+    <input type="hidden" id="id" name="id" value="${user.id}">
+    <input type="hidden" name="sex" value="${user.sex}">
     <div class="layui-form-item" style="margin-bottom: 30px">
         <label class="layui-form-label"  style="font-size: 20px;">登录名:</label>
         <div class="layui-input-block" >
-            <input type="text" name="loginName" lay-verify="loginName" autocomplete="off" placeholder="请输入内容" class="layui-input">
+            <input type="text" name="loginName" lay-verify="loginName" autocomplete="off" value="${user.loginName}" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item" style="margin-bottom: 30px">
         <label class="layui-form-label"  style="font-size: 20px;">姓名:</label>
         <div class="layui-input-block">
-            <input type="text" name="realName" lay-verify="realName" autocomplete="off" placeholder="请输入内容" class="layui-input">
+            <input type="text" name="realName" lay-verify="realName" autocomplete="off" value="${user.realName}" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item" style="margin-bottom: 30px">
         <label class="layui-form-label" style="font-size: 20px;">密码:</label>
         <div class="layui-input-block">
-            <input type="password" name="password" lay-verify="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
+            <input type="password" name="password" lay-verify="password" value="${user.password}" autocomplete="off" class="layui-input">
         </div>
     </div>
 
-    <div class="layui-form-item" style="margin-bottom: 30px">
-        <label class="layui-form-label" style="font-size: 20px;">性别：</label>
-        <div class="layui-input-block">
-            <input type="radio" name="sex" value="男"  title="男" checked="">
-            <input type="radio" name="sex" value="女" title="女">
-        </div>
-    </div>
     <div class="layui-form-item" style="margin-bottom: 30px">
         <label class="layui-form-label" style="font-size: 20px;">地址：</label>
         <div class="layui-input-inline">
@@ -145,11 +144,11 @@
     <div class="layui-form-item">
         <div class="layui-input-block">
             <!--lay-filter 事件过滤器-->
-            <button class="layui-btn" lay-submit lay-filter="go" id="register">注册</button>
+            <button class="layui-btn" lay-submit lay-filter="go" id="updateUser">修改</button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
         </div>
     </div>
-</form>S
+</form>
 
 </body>
 </html>

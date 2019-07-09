@@ -16,4 +16,6 @@ public interface UserService {
     public ResultData findCurPage(int curPage,int pageSize);
     // 查询用户总数
     public  int  uerTotal();
+    // 根据id  查询用户
+    public User findUser(String id);
 }

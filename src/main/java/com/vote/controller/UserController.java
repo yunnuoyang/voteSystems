@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -41,7 +42,7 @@ public class UserController {
         user.setAddress(province+city+counties+"");
         int i = userService.updateUser(user);
        if(i>0){
-        return "success";
+          return "success";
        }else{
            return "error";
        }
@@ -72,5 +73,21 @@ public class UserController {
         all.setCode(0);
         all.setMsg("");
         return all;
+    }
+
+    // 根据id  查询用户
+    @RequestMapping("/findUser")
+    public ModelAndView findUser(String uid){
+        ModelAndView modelAndView=new ModelAndView();
+        User user = userService.findUser(uid);
+        System.out.println(user);
+        if(user!=null){
+             modelAndView.setViewName("updateUser");
+             modelAndView.addObject("user",user);
+
+        }else{
+            modelAndView.setViewName("welcome");
+        }
+         return  modelAndView;
     }
 }

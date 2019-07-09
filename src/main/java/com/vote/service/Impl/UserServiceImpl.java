@@ -4,6 +4,7 @@ import com.vote.pojo.ResultData;
 import com.vote.pojo.User;
 import com.vote.repository.UserRepository;
 import com.vote.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -12,7 +13,7 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Resource
+    @Autowired
     private UserRepository userRepository;
 
     @Override
@@ -43,5 +44,10 @@ public class UserServiceImpl implements UserService {
         return userRepository.userTotal();
     }
 
-
+    @Override
+    public User findUser(String id) {
+        System.out.println("id:"+id);
+        User user = userRepository.findUserById(id);
+        return user;
+    }
 }

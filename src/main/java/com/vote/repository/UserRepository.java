@@ -1,6 +1,7 @@
 package com.vote.repository;
 
 import com.vote.pojo.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -15,4 +16,7 @@ public interface UserRepository {
       public List<User>  findCurPage(int startPage,int pageSize);
       // 查询用户的总数
       public int userTotal();
+
+      // 根据id 查询用户
+       public  User findUserById(@Param("id") String id);
 }
