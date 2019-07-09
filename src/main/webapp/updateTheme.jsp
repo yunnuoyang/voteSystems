@@ -35,7 +35,7 @@
             <label class="layui-form-label">发布日期</label>
             <div class="layui-input-inline">
                 <input type="text" name="themeDate" class="layui-input" id="themeDate" lay-verify="date"
-                       placeholder="${curTheme.themeDate}" autocomplete="off" class="layui-input">
+                       placeholder="${curTheme.themeDate.toLocaleString()}" autocomplete="off" class="layui-input">
             </div>
         </div>
 
@@ -45,7 +45,7 @@
         <div class="layui-inline">
             <label class="layui-form-label">终止日期</label>
             <div class="layui-input-inline">
-                <input type="text" name="endDate" id="endDate" lay-verify="date" placeholder="${curTheme.endDate}"
+                <input type="text" name="endDate" id="endDate" lay-verify="date" placeholder="${curTheme.endDate.toLocaleString()}"
                        autocomplete="off" class="layui-input">
             </div>
         </div>
