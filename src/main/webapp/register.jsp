@@ -51,9 +51,11 @@
                     dataType:"text",
                     success: function(res) {
                         if (res == "success") {
+
                             layer.msg("注册成功！");
                             location.href = "/login.jsp";
                         } else {
+                            layer.msg("注册失败！");
                             // 提示框
                             layer.open({
                                 confirmTrans: function(){
@@ -67,7 +69,21 @@
                             /*返回注册界面*/
                             location.href = "/register.jsp";
                         }
+                    },
+                    error:function () {
+                        layer.msg("注册失败！");
+                        // 提示框
+                        layer.open({
+                            confirmTrans: function(){
+                                //配置一个透明的询问框
+                                layer.msg('用户信息注册失败，请重新注册！', {
+                                    time: 2000, //2s后自动关闭
+                                    btn: ['好的', '返回']
+                                });
+                            }
+                        })
                     }
+
                 })
                 return false;
             });
