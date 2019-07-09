@@ -25,7 +25,7 @@ public class ThemeServiceImpl implements ThemeService {
 
     @Override
     public List<Theme> themeList(Theme theme,int page,int limit) {
-        return themeRepository.findAll(theme,page,limit);
+        return themeRepository.findAll(theme,(page-1)*limit,limit);
     }
 
     @Override
@@ -36,5 +36,10 @@ public class ThemeServiceImpl implements ThemeService {
     @Override
     public Theme findThemeByID(String id) {
         return themeRepository.findThemeByID(id);
+    }
+
+    @Override
+    public Integer themeCount() {
+        return themeRepository.count();
     }
 }

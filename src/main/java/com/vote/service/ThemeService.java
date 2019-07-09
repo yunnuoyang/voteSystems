@@ -13,4 +13,6 @@ public interface ThemeService {
    Integer modifyTheme(Theme theme);
 
     Theme findThemeByID(String id);
+
+    Integer themeCount();
 }

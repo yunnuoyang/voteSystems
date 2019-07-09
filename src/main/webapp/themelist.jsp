@@ -31,7 +31,7 @@
                     window.location="theme/addTheme";
             })
     </script>
-  <table class="layui-table" lay-data="{width: 892, height:330, url:'theme/list', page:true, id:'idTest'}" lay-filter="demo">
+  <table class="layui-table" lay-data="{width: 1450, height:500, url:'theme/list', page:true, id:'idTest'}" lay-filter="demo">
       <thead>
           <tr>
               <th lay-data="{type:'checkbox', fixed: 'left',}" layui-hide=true ></th>

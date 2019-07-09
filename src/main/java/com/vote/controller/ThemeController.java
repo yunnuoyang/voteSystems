@@ -62,7 +62,7 @@ public class ThemeController {
         ResultData resultData = new ResultData();
         List<Theme> themes = themeService.themeList(theme,page,limit);
         resultData.setCode(0);
-        resultData.setCount(10);
+        resultData.setCount(themeService.themeCount());
         resultData.setMsg("ok");
         resultData.setData(themes);
         return resultData;
