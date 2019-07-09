@@ -26,7 +26,7 @@ public class ThemeController {
         ModelAndView modelAndView=new ModelAndView();
         Theme theme=themeService.findThemeByID(id);
         modelAndView.addObject("curTheme",theme);
-        modelAndView.setViewName("/updateTheme");
+        modelAndView.setViewName("updateTheme");
         return modelAndView;
     }
 
