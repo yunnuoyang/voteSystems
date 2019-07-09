@@ -26,7 +26,7 @@ public class VoteController {
     @GetMapping("/addTicket/{tid}/{ticketsType}")
     @ResponseBody
     public String addTicket(HttpSession session, @PathVariable("tid") String tid, @PathVariable("ticketsType") int ticketsType) throws ParseException {
-        System.out.println("进入controller");
+        System.out.println("---->进入controller");
         //通过session获取当前用户的id
         User user = (User) session.getAttribute("user");
         //将投票信息封装成对象，传给service
@@ -35,7 +35,7 @@ public class VoteController {
         tickets.setUid(user.getId());
         tickets.setTid(tid);
         tickets.setAddData(new Date());
-        tickets.setTicketsType(0);
+        tickets.setTicketsType(ticketsType);
         //判断是否已经投过票
         Tickets alreadyVote = voteService.findByUidAndTid(user.getId(), tid);
         if(alreadyVote!=null){
@@ -44,10 +44,14 @@ public class VoteController {
             boolean flag = voteService.addTicket(tickets);
             if(flag){
                 //投票未逾期
+                System.out.println("未逾期");
                 return "success";
+            }else{
+                //投票逾期
+                System.out.println("逾期");
+                return "fail";
             }
         }
-        //投票逾期
-        return "fail";
+
     }
 }

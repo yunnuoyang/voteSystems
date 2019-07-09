@@ -1,6 +1,8 @@
 package com.vote.service.Impl;
 
+import com.vote.pojo.Theme;
 import com.vote.pojo.Tickets;
+import com.vote.repository.ThemeRepository;
 import com.vote.repository.VoteRepository;
 import com.vote.service.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ public class VoteServiceImpl implements VoteService {
     @Autowired
     private VoteRepository voteRepository;
 
+    @Autowired
+    private ThemeRepository themeRepository;
+
     @Override
     public boolean addTicket(Tickets tickets) {
         boolean flag = false;
@@ -25,11 +30,10 @@ public class VoteServiceImpl implements VoteService {
         //...
         Date end = null;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            end = sdf.parse("2019-7-25");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+
+        Theme theme = themeRepository.findThemeByID(tickets.getTid());
+        end = theme.getEndDate();
+
         //获取投票时间
         Date now = tickets.getAddData();
 
