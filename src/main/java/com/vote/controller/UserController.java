@@ -47,7 +47,6 @@ public class UserController {
            return "error";
        }
     }
-
     /**
      * 删除用户
      * @param uid
@@ -65,7 +64,7 @@ public class UserController {
              return "error";
          }
     }
-    //用户列表
+    //用户当前页列表
     @RequestMapping("/userList")
     @ResponseBody
     public ResultData findAll(@RequestParam(defaultValue = "1") int page,@RequestParam(defaultValue = "10") int limit){
@@ -73,6 +72,13 @@ public class UserController {
         all.setCode(0);
         all.setMsg("");
         return all;
+    }
+    //所有用户
+    @RequestMapping("/allUser")
+    @ResponseBody
+    public  List<User>  users(){
+        List<User> users = userService.allUser();
+        return  users;
     }
 
     // 根据id  查询用户

@@ -45,46 +45,67 @@
                 //弹出层  最终的提交信息  当前容器的全部表单字段，名值对形式：{name: value}
                 // layer.msg(JSON.stringify(data.field));
                 $.ajax({
-                    url:"/user/register",
+                    url:"/user/allUser",
                     type:"post",
-                    data:data.field,
-                    dataType:"text",
-                    success: function(res) {
-                        if (res == "success") {
+                    dataType:"json",
+                    success:function(datas){
+                        console.log(datas.length);
+                        var flag=true;
+                        for (var i = 0; i < datas.length;i++) {
+                            console.log(datas[i].loginName+"--"+data.field.loginName);
+                            if(datas[i].loginName==data.field.loginName){
+                                layer.msg("用户名不能重复!");
+                                flag=false;
+                                break;
+                            }
+                        }
 
-                            layer.msg("注册成功！");
-                            location.href = "/login.jsp";
-                        } else {
-                            layer.msg("注册失败！");
-                            // 提示框
-                            layer.open({
-                                confirmTrans: function(){
-                                    //配置一个透明的询问框
-                                    layer.msg('用户信息注册失败，请重新注册！', {
-                                        time: 2000, //2s后自动关闭
-                                        btn: ['好的', '返回']
-                                    });
+                        if(flag){
+                            $.ajax({
+                                url:"/user/register",
+                                type:"post",
+                                data:data.field,
+                                dataType:"text",
+                                success: function(res) {
+                                    if (res == "success") {
+                                        layer.msg("注册成功！");
+                                        return true;
+                                        location.href = "/login.jsp";
+                                    } else {
+                                        layer.msg("注册失败！");
+                                        // 提示框
+                                        layer.open({
+                                            confirmTrans: function(){
+                                                //配置一个透明的询问框
+                                                layer.msg('用户信息注册失败，请重新注册！', {
+                                                    time: 2000, //2s后自动关闭
+                                                    btn: ['好的', '返回']
+                                                });
+                                            }
+                                        })
+                                        /*返回注册界面*/
+                                        location.href = "/register.jsp";
+                                    }
+                                },
+                                error:function () {
+                                    layer.msg("注册失败！");
+                                    // 提示框
+                                    layer.open({
+                                        confirmTrans: function(){
+                                            //配置一个透明的询问框
+                                            layer.msg('用户信息注册失败，请重新注册！', {
+                                                time: 2000, //2s后自动关闭
+                                                btn: ['好的', '返回']
+                                            });
+                                        }
+                                    })
                                 }
                             })
-                            /*返回注册界面*/
-                            location.href = "/register.jsp";
                         }
-                    },
-                    error:function () {
-                        layer.msg("注册失败！");
-                        // 提示框
-                        layer.open({
-                            confirmTrans: function(){
-                                //配置一个透明的询问框
-                                layer.msg('用户信息注册失败，请重新注册！', {
-                                    time: 2000, //2s后自动关闭
-                                    btn: ['好的', '返回']
-                                });
-                            }
-                        })
-                    }
 
+                    }
                 })
+
                 return false;
             });
         });

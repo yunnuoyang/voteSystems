@@ -19,4 +19,6 @@ public interface UserRepository {
 
       // 根据id 查询用户
        public  User findUserById(@Param("id") String id);
+       // 查询所有用户
+      public List<User> allUser();
 }
