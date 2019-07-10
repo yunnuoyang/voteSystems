@@ -69,7 +69,6 @@
                                 success: function(res) {
                                     if (res == "success") {
                                         layer.msg("注册成功！");
-                                        return true;
                                         location.href = "/login.jsp";
                                     } else {
                                         layer.msg("注册失败！");
@@ -83,6 +82,7 @@
                                                 });
                                             }
                                         })
+
                                         /*返回注册界面*/
                                         location.href = "/register.jsp";
                                     }
