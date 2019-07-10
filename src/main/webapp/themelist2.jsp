@@ -12,19 +12,15 @@
 </head>
 <body>
 <div style="margin-bottom: 5px;">
-
-    <!-- 示例-970 -->
-    <ins class="adsbygoogle" style="display:inline-block;width:970px;height:90px" data-ad-client="ca-pub-6111334333458862" data-ad-slot="3820120620"></ins>
-
 </div>
 
-  <table class="layui-table" lay-data="{width: 892, height:330, url:'theme/list', page:true, id:'idTest'}" lay-filter="demo">
+  <table class="layui-table" lay-data="{width: 1450, height:590, url:'theme/list', page:true, id:'idTest'}" lay-filter="demo">
       <thead>
           <tr>
-              <th lay-data="{field:'id', width:80, sort: true, fixed: true}">ID</th>
-              <th lay-data="{field:'themeName', width:180}">主题名</th>
-              <th lay-data="{field:'endDate', width:180}">截止日期</th>
-              <th lay-data="{fixed: 'right', width:178, align:'center', toolbar: '#barDemo'}"></th>
+              <th lay-data="{field:'id', width:200, sort: true, fixed: true}">ID</th>
+              <th lay-data="{field:'themeName', width:200}">主题名</th>
+              <th lay-data="{field:'endDate', width:200}">截止日期</th>
+              <th lay-data="{fixed: 'right', width:200, align:'center', toolbar: '#barDemo'}">操作</th>
           </tr>
       </thead>
   </table>
